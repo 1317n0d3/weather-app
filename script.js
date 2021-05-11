@@ -5,6 +5,9 @@ fetch('https://goweather.herokuapp.com/weather/' + yourCity)
     if(response.ok){
       return response.json();
     }
+
+    const error = document.querySelector('#error');
+    error.textContent = 'City is not found';
   })
   .then((data) => {
     console.log(data);
@@ -18,6 +21,7 @@ fetch('https://goweather.herokuapp.com/weather/' + yourCity)
       windDATomorrow = document.querySelector('#windDATomorrow');
 
     city.innerHTML = `${yourCity}`;
+
     temperatureToday.innerHTML = `Temperature: ${data.temperature}`;
     windToday.innerHTML = `Wind: ${data.wind}`;
     descriptionToday.innerHTML = `Description: ${data.description}`;
